@@ -65,7 +65,7 @@ export default function HomePage() {
   }, []);
 
   const selectedRoom = rooms.find((r) => r.id === selectedRoomId);
-  const galleryRoom = rooms.find((r) => r.id === (galleryRoomId || selectedRoomId));
+  const galleryRoom = galleryRoomId ? rooms.find((r) => r.id === galleryRoomId) : undefined;
 
   return (
     <div id="top" className="container-page space-y-12 sm:space-y-16">
@@ -263,7 +263,7 @@ export default function HomePage() {
 
       <RoomGalleryModal
         room={galleryRoom}
-        open={!!galleryRoom}
+        open={!!galleryRoomId}
         onClose={() => setGalleryRoomId(null)}
       />
     </div>
