@@ -35,22 +35,22 @@ export function CheckInForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-white/[0.08] bg-white/[0.04] px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/60 transition";
+    "w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/60 transition";
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-6 card-dark rounded-2xl p-5 sm:p-7 max-w-lg w-full"
+      className="mt-6 card-light rounded-2xl p-5 sm:p-7 max-w-lg w-full"
     >
-      <h2 className="text-base sm:text-lg font-semibold text-white">
+      <h2 className="text-base sm:text-lg font-semibold text-gray-900">
         Online check-in
       </h2>
-      <p className="mt-1 text-xs sm:text-sm text-white/40">
+      <p className="mt-1 text-xs sm:text-sm text-gray-500">
         Use your booking confirmation code to check in before arrival.
       </p>
       <div className="mt-5 space-y-4 text-sm">
         <div>
-          <label className="block text-xs font-medium text-white/50 mb-1.5">
+          <label className="block text-xs font-medium text-gray-500 mb-1.5">
             Confirmation code
           </label>
           <input
@@ -63,7 +63,7 @@ export function CheckInForm() {
           />
         </div>
         <div>
-          <label className="block text-xs font-medium text-white/50 mb-1.5">
+          <label className="block text-xs font-medium text-gray-500 mb-1.5">
             Last name
           </label>
           <input
@@ -82,7 +82,7 @@ export function CheckInForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full inline-flex justify-center items-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-[#0a0a0a] hover:bg-accent-light disabled:opacity-40 disabled:cursor-not-allowed transition-colors mt-1"
+          className="w-full inline-flex justify-center items-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white hover:bg-accent-light disabled:opacity-40 disabled:cursor-not-allowed transition-colors mt-1"
         >
           {isSubmitting ? "Checking in…" : "Check in now"}
         </button>

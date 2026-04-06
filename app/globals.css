@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  @apply bg-[#0a0a0a] text-white antialiased;
+  @apply bg-[#fafaf8] text-gray-900 antialiased;
   min-height: 100vh;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -16,9 +16,9 @@ body {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
 }
 
-/* Kozystay-style card surface */
-.card-dark {
-  @apply bg-[#161616] rounded-2xl border border-white/[0.06];
+/* Light card surface */
+.card-light {
+  @apply bg-white rounded-2xl border border-gray-200/80 shadow-sm;
 }
 
 /* Section divider */

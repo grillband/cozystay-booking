@@ -113,49 +113,49 @@ export default function HomePage() {
               "url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600')",
           }}
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#0a0a0a]/70 via-[#0a0a0a]/50 to-[#0a0a0a]" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/70 via-white/50 to-[#fafaf8]" />
 
         <div className="container-page flex flex-col items-center justify-center text-center py-32 sm:py-44 lg:py-52">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4">
             CozyStay Collection
           </p>
-          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
             Redefining your stay
           </h1>
-          <p className="mt-5 max-w-xl text-sm sm:text-base text-white/50 leading-relaxed">
+          <p className="mt-5 max-w-xl text-sm sm:text-base text-gray-500 leading-relaxed">
             From urban apartments to serene villas, where hotel quality meets the
             comfort of home.
           </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#booking"
-              className="inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3 text-sm font-semibold text-[#0a0a0a] transition hover:bg-accent-light"
+              className="inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3 text-sm font-semibold text-white transition hover:bg-accent-light"
             >
               Reserve your stay
               <span aria-hidden="true">→</span>
             </a>
             <a
               href="#suites"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/[0.12] px-6 py-3 text-sm font-medium text-white/70 transition hover:bg-white/[0.06] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-6 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
             >
               View properties
             </a>
           </div>
 
           {/* Stats row */}
-          <dl className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-sm text-white/40">
+          <dl className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-sm text-gray-400">
             <div className="text-center">
-              <dd className="text-2xl font-semibold text-white">4.8</dd>
+              <dd className="text-2xl font-semibold text-gray-900">4.8</dd>
               <dt className="mt-1 text-xs uppercase tracking-wider">Guest rating</dt>
             </div>
-            <div className="hidden sm:block h-8 w-px bg-white/[0.08]" />
+            <div className="hidden sm:block h-8 w-px bg-gray-300" />
             <div className="text-center">
-              <dd className="text-2xl font-semibold text-white">2</dd>
+              <dd className="text-2xl font-semibold text-gray-900">2</dd>
               <dt className="mt-1 text-xs uppercase tracking-wider">Properties</dt>
             </div>
-            <div className="hidden sm:block h-8 w-px bg-white/[0.08]" />
+            <div className="hidden sm:block h-8 w-px bg-gray-300" />
             <div className="text-center">
-              <dd className="text-2xl font-semibold text-white">24/7</dd>
+              <dd className="text-2xl font-semibold text-gray-900">24/7</dd>
               <dt className="mt-1 text-xs uppercase tracking-wider">Support</dt>
             </div>
           </dl>
@@ -170,21 +170,21 @@ export default function HomePage() {
               <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
                 Our properties
               </p>
-              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
                 Signature apartments
               </h2>
-              <p className="mt-2 max-w-xl text-sm text-white/40">
+              <p className="mt-2 max-w-xl text-sm text-gray-500">
                 Each apartment is thoughtfully furnished with hotel-grade bedding, a
                 fully equipped kitchen and fast Wi-Fi.
               </p>
             </div>
-            <p className="text-xs text-white/30">
+            <p className="text-xs text-gray-400">
               Instant confirmation · Synced with channel manager
             </p>
           </div>
 
           {loading && (
-            <p className="text-sm text-white/40">Loading properties…</p>
+            <p className="text-sm text-gray-400">Loading properties…</p>
           )}
           {error && (
             <p className="text-sm text-red-400">{error} Please try again later.</p>
@@ -214,10 +214,10 @@ export default function HomePage() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Reservation
             </p>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
               Book your stay
             </h2>
-            <p className="mt-2 text-sm text-white/40">
+            <p className="mt-2 text-sm text-gray-500">
               Secure booking with instant confirmation from our channel manager.
             </p>
           </div>
@@ -238,7 +238,7 @@ export default function HomePage() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Why CozyStay
             </p>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
               Experience the exceptional
             </h2>
           </div>
@@ -251,8 +251,8 @@ export default function HomePage() {
                 onClick={() => setActiveTab(i)}
                 className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
                   activeTab === i
-                    ? "bg-accent text-[#0a0a0a]"
-                    : "border border-white/[0.08] text-white/50 hover:text-white hover:bg-white/[0.04]"
+                    ? "bg-accent text-white"
+                    : "border border-gray-200 text-gray-500 hover:text-gray-900 hover:bg-gray-100"
                 }`}
               >
                 {tab.label}
@@ -270,10 +270,10 @@ export default function HomePage() {
               />
             </div>
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-xl font-semibold text-gray-900">
                 {TABS[activeTab].title}
               </h3>
-              <p className="text-sm leading-relaxed text-white/50">
+              <p className="text-sm leading-relaxed text-gray-500">
                 {TABS[activeTab].description}
               </p>
               <a
@@ -294,7 +294,7 @@ export default function HomePage() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Testimonials
             </p>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
               What our guests say
             </h2>
           </div>
@@ -303,7 +303,7 @@ export default function HomePage() {
             {TESTIMONIALS.map((t) => (
               <div
                 key={t.name}
-                className="card-dark rounded-2xl p-6 flex flex-col"
+                className="card-light rounded-2xl p-6 flex flex-col"
               >
                 <div className="flex gap-1 text-accent mb-4">
                   {Array.from({ length: t.rating }).map((_, i) => (
@@ -316,12 +316,12 @@ export default function HomePage() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-sm text-white/60 leading-relaxed flex-1">
+                <p className="text-sm text-gray-600 leading-relaxed flex-1">
                   &ldquo;{t.text}&rdquo;
                 </p>
-                <div className="mt-5 pt-4 border-t border-white/[0.06]">
-                  <p className="text-sm font-medium text-white">{t.name}</p>
-                  <p className="text-xs text-white/30">{t.location}</p>
+                <div className="mt-5 pt-4 border-t border-gray-200">
+                  <p className="text-sm font-medium text-gray-900">{t.name}</p>
+                  <p className="text-xs text-gray-400">{t.location}</p>
                 </div>
               </div>
             ))}
@@ -333,21 +333,21 @@ export default function HomePage() {
       <section className="section-gap">
         <div className="container-page">
           <div className="grid gap-6 lg:grid-cols-3">
-            <div className="card-dark rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-semibold text-white">
+            <div className="card-light rounded-2xl p-6 space-y-3">
+              <h3 className="text-sm font-semibold text-gray-900">
                 About CozyStay
               </h3>
-              <p className="text-sm text-white/40 leading-relaxed">
+              <p className="text-sm text-gray-500 leading-relaxed">
                 Located in the heart of the city, CozyStay is designed for business
                 travellers, digital nomads and families who want the comfort of an
                 apartment with the service standards of a boutique hotel.
               </p>
             </div>
-            <div className="card-dark rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-semibold text-white">
+            <div className="card-light rounded-2xl p-6 space-y-3">
+              <h3 className="text-sm font-semibold text-gray-900">
                 What&apos;s included
               </h3>
-              <ul className="text-sm text-white/40 space-y-1.5">
+              <ul className="text-sm text-gray-500 space-y-1.5">
                 <li className="flex items-center gap-2">
                   <span className="h-1 w-1 rounded-full bg-accent flex-shrink-0" />
                   High-speed Wi-Fi and dedicated workspace
@@ -366,11 +366,11 @@ export default function HomePage() {
                 </li>
               </ul>
             </div>
-            <div className="card-dark rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-semibold text-white">
+            <div className="card-light rounded-2xl p-6 space-y-3">
+              <h3 className="text-sm font-semibold text-gray-900">
                 Stay with confidence
               </h3>
-              <p className="text-sm text-white/40 leading-relaxed">
+              <p className="text-sm text-gray-500 leading-relaxed">
                 Your booking is managed through a professional channel manager used
                 by major travel sites. Availability is always up to date and your
                 details are handled securely end-to-end.

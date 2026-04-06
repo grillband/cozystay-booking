@@ -5,7 +5,7 @@ const nextConfig = {
     unoptimized: true
   },
   turbopack: {
-    root: ".",
+    root: "C:\\Users\\USER\\Documents\\apartment-booking",
   },
 };
 

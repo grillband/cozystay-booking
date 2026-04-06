@@ -114,14 +114,14 @@ export function BookingPanel({
   }
 
   const inputClass =
-    "w-full rounded-xl border border-white/[0.08] bg-white/[0.04] px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/60 transition";
+    "w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/60 transition";
 
   return (
-    <div className="card-dark rounded-2xl p-5 sm:p-7">
+    <div className="card-light rounded-2xl p-5 sm:p-7">
       <form onSubmit={handleSubmit} className="space-y-4 text-sm">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-medium text-white/50 mb-1.5">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5">
               Check-in
             </label>
             <input
@@ -145,7 +145,7 @@ export function BookingPanel({
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-white/50 mb-1.5">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5">
               Check-out
             </label>
             <input
@@ -169,7 +169,7 @@ export function BookingPanel({
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-medium text-white/50 mb-1.5">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5">
               Guests
             </label>
             <input
@@ -183,7 +183,7 @@ export function BookingPanel({
             />
           </div>
           <div>
-            <label className="block text-xs font-medium text-white/50 mb-1.5">
+            <label className="block text-xs font-medium text-gray-500 mb-1.5">
               Property
             </label>
             <select
@@ -204,7 +204,7 @@ export function BookingPanel({
               type="button"
               disabled={!selectedRoomId}
               onClick={() => selectedRoomId && onOpenGallery(selectedRoomId)}
-              className="mt-1.5 inline-flex items-center gap-1 text-xs text-accent hover:text-accent-light disabled:text-white/20 disabled:cursor-not-allowed transition-colors"
+              className="mt-1.5 inline-flex items-center gap-1 text-xs text-accent hover:text-accent-light disabled:text-gray-300 disabled:cursor-not-allowed transition-colors"
             >
               View photos
             </button>
@@ -212,7 +212,7 @@ export function BookingPanel({
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-white/50 mb-1.5">
+          <label className="block text-xs font-medium text-gray-500 mb-1.5">
             Full name
           </label>
           <input
@@ -225,7 +225,7 @@ export function BookingPanel({
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-white/50 mb-1.5">
+          <label className="block text-xs font-medium text-gray-500 mb-1.5">
             Email
           </label>
           <input
@@ -242,12 +242,12 @@ export function BookingPanel({
         )}
 
         {pricing && (
-          <div className="rounded-xl border border-white/[0.06] bg-white/[0.03] p-3">
+          <div className="rounded-xl border border-gray-200 bg-gray-50 p-3">
             <div className="flex justify-between items-center text-sm">
-              <span className="text-white/40">
+              <span className="text-gray-500">
                 {pricingLoading ? "Calculating…" : "Channel manager pricing"}
               </span>
-              <span className="font-semibold text-white">
+              <span className="font-semibold text-gray-900">
                 Total: {pricing.currency}{" "}
                 {pricing.totalPrice.toLocaleString(undefined, {
                   maximumFractionDigits: 0,
@@ -255,7 +255,7 @@ export function BookingPanel({
               </span>
             </div>
             {!pricingLoading && (
-              <div className="text-xs text-white/30 mt-1">
+              <div className="text-xs text-gray-400 mt-1">
                 {pricing.currency}{" "}
                 {pricing.pricePerNight.toLocaleString(undefined, {
                   maximumFractionDigits: 0,
@@ -275,7 +275,7 @@ export function BookingPanel({
         <button
           type="submit"
           disabled={isSubmitting || !pricing || pricingLoading}
-          className="w-full inline-flex justify-center items-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-[#0a0a0a] hover:bg-accent-light disabled:opacity-40 disabled:cursor-not-allowed transition-colors mt-1"
+          className="w-full inline-flex justify-center items-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white hover:bg-accent-light disabled:opacity-40 disabled:cursor-not-allowed transition-colors mt-1"
         >
           {isSubmitting
             ? "Processing…"

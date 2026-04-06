@@ -21,21 +21,21 @@ const config: Config = {
           900: "#231b13"
         },
         surface: {
-          DEFAULT: "#161616",
-          light: "#1e1e1e",
-          lighter: "#262626",
+          DEFAULT: "#ffffff",
+          light: "#f5f5f3",
+          lighter: "#fafaf8",
         },
         accent: {
-          DEFAULT: "#c8a97e",
-          light: "#dcc5a0",
+          DEFAULT: "#8b6f47",
+          light: "#c8a97e",
         },
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "ui-sans-serif", "sans-serif"]
       },
       boxShadow: {
-        card: "0 2px 20px rgba(0, 0, 0, 0.3)",
-        "card-hover": "0 8px 40px rgba(0, 0, 0, 0.5)",
+        card: "0 2px 16px rgba(0, 0, 0, 0.06)",
+        "card-hover": "0 8px 30px rgba(0, 0, 0, 0.1)",
       },
       borderRadius: {
         '4xl': '2rem',
