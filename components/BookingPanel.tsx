@@ -113,11 +113,10 @@ export function BookingPanel({
     }
   }
 
-  const inputClass =
-    "w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/60 transition";
+  const inputClass = "glass-input";
 
   return (
-    <div className="card-light rounded-2xl p-5 sm:p-7">
+    <div className="glass rounded-2xl p-5 sm:p-7">
       <form onSubmit={handleSubmit} className="space-y-4 text-sm">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
@@ -242,12 +241,12 @@ export function BookingPanel({
         )}
 
         {pricing && (
-          <div className="rounded-xl border border-gray-200 bg-gray-50 p-3">
+          <div className="rounded-xl p-3" style={{ background: 'rgba(255,255,255,0.45)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.5)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6)' }}>
             <div className="flex justify-between items-center text-sm">
               <span className="text-gray-500">
                 {pricingLoading ? "Calculating…" : "Channel manager pricing"}
               </span>
-              <span className="font-semibold text-gray-900">
+              <span className="font-semibold text-gray-800">
                 Total: {pricing.currency}{" "}
                 {pricing.totalPrice.toLocaleString(undefined, {
                   maximumFractionDigits: 0,
@@ -275,7 +274,7 @@ export function BookingPanel({
         <button
           type="submit"
           disabled={isSubmitting || !pricing || pricingLoading}
-          className="w-full inline-flex justify-center items-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white hover:bg-accent-light disabled:opacity-40 disabled:cursor-not-allowed transition-colors mt-1"
+          className="w-full glass-btn px-4 py-3 text-sm mt-1"
         >
           {isSubmitting
             ? "Processing…"

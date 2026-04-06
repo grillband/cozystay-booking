@@ -113,13 +113,13 @@ export default function HomePage() {
               "url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600')",
           }}
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/70 via-white/50 to-[#fafaf8]" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/60 via-transparent to-transparent" />
 
         <div className="container-page flex flex-col items-center justify-center text-center py-32 sm:py-44 lg:py-52">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4">
             CozyStay Collection
           </p>
-          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-800 sm:text-5xl lg:text-6xl">
             Redefining your stay
           </h1>
           <p className="mt-5 max-w-xl text-sm sm:text-base text-gray-500 leading-relaxed">
@@ -129,36 +129,38 @@ export default function HomePage() {
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a
               href="#booking"
-              className="inline-flex items-center gap-2 rounded-xl bg-accent px-7 py-3 text-sm font-semibold text-white transition hover:bg-accent-light"
+              className="glass-btn px-7 py-3"
             >
               Reserve your stay
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true" className="ml-2">→</span>
             </a>
             <a
               href="#suites"
-              className="inline-flex items-center gap-2 rounded-xl border border-gray-300 px-6 py-3 text-sm font-medium text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
+              className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium text-gray-600 transition-all hover:-translate-y-0.5" style={{ background: 'rgba(255,255,255,0.45)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.5)', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6)' }}
             >
               View properties
             </a>
           </div>
 
           {/* Stats row */}
-          <dl className="mt-16 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 text-sm text-gray-400">
-            <div className="text-center">
-              <dd className="text-2xl font-semibold text-gray-900">4.8</dd>
-              <dt className="mt-1 text-xs uppercase tracking-wider">Guest rating</dt>
-            </div>
-            <div className="hidden sm:block h-8 w-px bg-gray-300" />
-            <div className="text-center">
-              <dd className="text-2xl font-semibold text-gray-900">2</dd>
-              <dt className="mt-1 text-xs uppercase tracking-wider">Properties</dt>
-            </div>
-            <div className="hidden sm:block h-8 w-px bg-gray-300" />
-            <div className="text-center">
-              <dd className="text-2xl font-semibold text-gray-900">24/7</dd>
-              <dt className="mt-1 text-xs uppercase tracking-wider">Support</dt>
-            </div>
-          </dl>
+          <div className="mt-16 glass rounded-2xl px-8 py-5 inline-flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            <dl className="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-sm text-gray-400">
+              <div className="text-center">
+                <dd className="text-2xl font-semibold text-gray-800">4.8</dd>
+                <dt className="mt-1 text-xs uppercase tracking-wider">Guest rating</dt>
+              </div>
+              <div className="hidden sm:block h-8 w-px" style={{ background: 'rgba(0,0,0,0.08)' }} />
+              <div className="text-center">
+                <dd className="text-2xl font-semibold text-gray-800">2</dd>
+                <dt className="mt-1 text-xs uppercase tracking-wider">Properties</dt>
+              </div>
+              <div className="hidden sm:block h-8 w-px" style={{ background: 'rgba(0,0,0,0.08)' }} />
+              <div className="text-center">
+                <dd className="text-2xl font-semibold text-gray-800">24/7</dd>
+                <dt className="mt-1 text-xs uppercase tracking-wider">Support</dt>
+              </div>
+            </dl>
+          </div>
         </div>
       </section>
 
@@ -170,7 +172,7 @@ export default function HomePage() {
               <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
                 Our properties
               </p>
-              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+              <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-800">
                 Signature apartments
               </h2>
               <p className="mt-2 max-w-xl text-sm text-gray-500">
@@ -214,7 +216,7 @@ export default function HomePage() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Reservation
             </p>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-800">
               Book your stay
             </h2>
             <p className="mt-2 text-sm text-gray-500">
@@ -238,7 +240,7 @@ export default function HomePage() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Why CozyStay
             </p>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-800">
               Experience the exceptional
             </h2>
           </div>
@@ -249,11 +251,12 @@ export default function HomePage() {
               <button
                 key={tab.label}
                 onClick={() => setActiveTab(i)}
-                className={`rounded-xl px-4 py-2 text-sm font-medium transition ${
+                className={`rounded-xl px-4 py-2 text-sm font-medium transition-all ${
                   activeTab === i
-                    ? "bg-accent text-white"
-                    : "border border-gray-200 text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+                    ? "glass-btn"
+                    : "text-gray-500 hover:text-gray-800"
                 }`}
+                style={activeTab !== i ? { background: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.5)' } : undefined}
               >
                 {tab.label}
               </button>
@@ -262,7 +265,7 @@ export default function HomePage() {
 
           {/* Active tab content */}
           <div className="grid gap-8 md:grid-cols-2 items-center">
-            <div className="overflow-hidden rounded-2xl">
+            <div className="overflow-hidden rounded-2xl" style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5)', border: '1px solid rgba(255,255,255,0.4)' }}>
               <img
                 src={TABS[activeTab].image}
                 alt={TABS[activeTab].label}
@@ -270,7 +273,7 @@ export default function HomePage() {
               />
             </div>
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-gray-900">
+              <h3 className="text-xl font-semibold text-gray-800">
                 {TABS[activeTab].title}
               </h3>
               <p className="text-sm leading-relaxed text-gray-500">
@@ -294,7 +297,7 @@ export default function HomePage() {
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Testimonials
             </p>
-            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+            <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gray-800">
               What our guests say
             </h2>
           </div>
@@ -303,7 +306,7 @@ export default function HomePage() {
             {TESTIMONIALS.map((t) => (
               <div
                 key={t.name}
-                className="card-light rounded-2xl p-6 flex flex-col"
+                className="glass rounded-2xl p-6 flex flex-col"
               >
                 <div className="flex gap-1 text-accent mb-4">
                   {Array.from({ length: t.rating }).map((_, i) => (
@@ -319,8 +322,8 @@ export default function HomePage() {
                 <p className="text-sm text-gray-600 leading-relaxed flex-1">
                   &ldquo;{t.text}&rdquo;
                 </p>
-                <div className="mt-5 pt-4 border-t border-gray-200">
-                  <p className="text-sm font-medium text-gray-900">{t.name}</p>
+                <div className="mt-5 pt-4 border-t" style={{ borderColor: 'rgba(0,0,0,0.06)' }}>
+                  <p className="text-sm font-medium text-gray-800">{t.name}</p>
                   <p className="text-xs text-gray-400">{t.location}</p>
                 </div>
               </div>
@@ -333,8 +336,8 @@ export default function HomePage() {
       <section className="section-gap">
         <div className="container-page">
           <div className="grid gap-6 lg:grid-cols-3">
-            <div className="card-light rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-semibold text-gray-900">
+            <div className="glass rounded-2xl p-6 space-y-3">
+              <h3 className="text-sm font-semibold text-gray-800">
                 About CozyStay
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed">
@@ -343,8 +346,8 @@ export default function HomePage() {
                 apartment with the service standards of a boutique hotel.
               </p>
             </div>
-            <div className="card-light rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-semibold text-gray-900">
+            <div className="glass rounded-2xl p-6 space-y-3">
+              <h3 className="text-sm font-semibold text-gray-800">
                 What&apos;s included
               </h3>
               <ul className="text-sm text-gray-500 space-y-1.5">
@@ -366,8 +369,8 @@ export default function HomePage() {
                 </li>
               </ul>
             </div>
-            <div className="card-light rounded-2xl p-6 space-y-3">
-              <h3 className="text-sm font-semibold text-gray-900">
+            <div className="glass rounded-2xl p-6 space-y-3">
+              <h3 className="text-sm font-semibold text-gray-800">
                 Stay with confidence
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed">

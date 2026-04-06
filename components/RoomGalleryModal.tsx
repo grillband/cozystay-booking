@@ -31,18 +31,18 @@ export function RoomGalleryModal({ room, open, onClose }: RoomGalleryModalProps)
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-md"
       onClick={(e) => {
         if (e.target === e.currentTarget) {
           onClose();
         }
       }}
     >
-      <div className="relative w-full max-w-3xl mx-4 rounded-2xl border border-gray-200 bg-white">
+      <div className="glass-strong relative w-full max-w-3xl mx-4">
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-500 text-sm hover:bg-gray-200 hover:text-gray-900 transition-colors"
+          className="absolute right-4 top-4 z-10 inline-flex h-8 w-8 items-center justify-center rounded-full text-gray-500 text-sm transition-colors" style={{ background: 'rgba(255,255,255,0.5)', backdropFilter: 'blur(20px)' }}
         >
           ×
         </button>
@@ -52,7 +52,7 @@ export function RoomGalleryModal({ room, open, onClose }: RoomGalleryModalProps)
               <p className="text-xs font-medium uppercase tracking-[0.18em] text-gray-400">
                 Property gallery
               </p>
-              <h2 className="mt-1 text-base sm:text-lg font-semibold text-gray-900">
+              <h2 className="mt-1 text-base sm:text-lg font-semibold text-gray-800">
                 {room.name}
               </h2>
             </div>
@@ -61,7 +61,7 @@ export function RoomGalleryModal({ room, open, onClose }: RoomGalleryModalProps)
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-xl bg-gray-100 h-64 sm:h-80">
+          <div className="relative overflow-hidden rounded-xl h-64 sm:h-80" style={{ background: 'rgba(255,255,255,0.3)' }}>
             <img
               src={images[index]}
               alt={room.name}
@@ -72,14 +72,14 @@ export function RoomGalleryModal({ room, open, onClose }: RoomGalleryModalProps)
                 <button
                   type="button"
                   onClick={prev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 backdrop-blur-lg text-white h-8 w-8 flex items-center justify-center text-sm hover:bg-black/60 transition-colors"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full text-white h-8 w-8 flex items-center justify-center text-sm transition-colors" style={{ background: 'rgba(0,0,0,0.25)', backdropFilter: 'blur(20px)' }}
                 >
                   ‹
                 </button>
                 <button
                   type="button"
                   onClick={next}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-black/40 backdrop-blur-lg text-white h-8 w-8 flex items-center justify-center text-sm hover:bg-black/60 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full text-white h-8 w-8 flex items-center justify-center text-sm transition-colors" style={{ background: 'rgba(0,0,0,0.25)', backdropFilter: 'blur(20px)' }}
                 >
                   ›
                 </button>
@@ -96,9 +96,10 @@ export function RoomGalleryModal({ room, open, onClose }: RoomGalleryModalProps)
                   onClick={() => setIndex(i)}
                   className={`h-14 w-20 rounded-lg border ${
                     i === index
-                      ? "border-accent ring-2 ring-accent/40"
-                      : "border-gray-200 opacity-60 hover:opacity-100"
+                      ? "border-accent ring-2 ring-accent/30"
+                      : "opacity-60 hover:opacity-100"
                   } overflow-hidden flex-shrink-0 transition-opacity`}
+                  style={{ borderColor: i === index ? undefined : 'rgba(255,255,255,0.5)' }}
                 >
                   <img src={img} alt="" className="h-full w-full object-cover" />
                 </button>

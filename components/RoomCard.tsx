@@ -20,23 +20,23 @@ interface RoomCardProps {
 
 export function RoomCard({ room, onSelect }: RoomCardProps) {
   return (
-    <article className="card-light rounded-2xl overflow-hidden flex flex-col hover:border-accent/30 hover:-translate-y-1 transition-all duration-300 group h-full">
+    <article className="glass rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 group h-full">
       {room.imageUrl ? (
         <div
           className="aspect-[4/3] w-full bg-cover bg-center relative flex-shrink-0"
           style={{ backgroundImage: `url(${room.imageUrl})` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent" />
         </div>
       ) : (
         <div className="aspect-[4/3] w-full bg-gradient-to-tr from-surface via-surface-light to-surface-lighter flex-shrink-0" />
       )}
       <div className="p-5 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-2">
-          <h3 className="font-semibold text-gray-900 text-base sm:text-lg">
+          <h3 className="font-semibold text-gray-800 text-base sm:text-lg">
             {room.name}
           </h3>
-          <span className="inline-flex items-center rounded-lg bg-gray-100 px-2.5 py-1 text-[11px] font-medium text-gray-500 border border-gray-200">
+          <span className="inline-flex items-center rounded-lg px-2.5 py-1 text-[11px] font-medium text-gray-500" style={{ background: 'rgba(255,255,255,0.5)', border: '1px solid rgba(255,255,255,0.5)', backdropFilter: 'blur(10px)' }}>
             Up to {room.maxGuests} guests
           </span>
         </div>
@@ -45,7 +45,7 @@ export function RoomCard({ room, onSelect }: RoomCardProps) {
         </p>
         <div className="mt-4 flex items-center justify-between text-sm">
           <div>
-            <p className="font-semibold text-gray-900 text-sm sm:text-base">
+            <p className="font-semibold text-gray-800 text-sm sm:text-base">
               {room.currency}{" "}
               {room.pricePerNight.toLocaleString(undefined, {
                 maximumFractionDigits: 0,
@@ -67,7 +67,7 @@ export function RoomCard({ room, onSelect }: RoomCardProps) {
         </div>
         <button
           onClick={() => onSelect(room.id)}
-          className="mt-auto pt-5 inline-flex justify-center items-center rounded-xl bg-accent px-4 py-2.5 text-sm font-semibold text-white hover:bg-accent-light transition-colors"
+          className="mt-auto pt-5 glass-btn px-4 py-2.5 text-sm"
         >
           Book this property
         </button>

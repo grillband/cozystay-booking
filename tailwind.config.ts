@@ -34,8 +34,8 @@ const config: Config = {
         sans: ["Inter", "system-ui", "ui-sans-serif", "sans-serif"]
       },
       boxShadow: {
-        card: "0 2px 16px rgba(0, 0, 0, 0.06)",
-        "card-hover": "0 8px 30px rgba(0, 0, 0, 0.1)",
+        card: "0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.7)",
+        "card-hover": "0 4px 16px rgba(0,0,0,0.08), 0 12px 48px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8)",
       },
       borderRadius: {
         '4xl': '2rem',

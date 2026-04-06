@@ -34,15 +34,14 @@ export function CheckInForm() {
     }
   }
 
-  const inputClass =
-    "w-full rounded-xl border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/40 focus:border-accent/60 transition";
+  const inputClass = "glass-input";
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-6 card-light rounded-2xl p-5 sm:p-7 max-w-lg w-full"
+      className="mt-6 glass rounded-2xl p-5 sm:p-7 max-w-lg w-full"
     >
-      <h2 className="text-base sm:text-lg font-semibold text-gray-900">
+      <h2 className="text-base sm:text-lg font-semibold text-gray-800">
         Online check-in
       </h2>
       <p className="mt-1 text-xs sm:text-sm text-gray-500">
@@ -82,7 +81,7 @@ export function CheckInForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full inline-flex justify-center items-center rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-white hover:bg-accent-light disabled:opacity-40 disabled:cursor-not-allowed transition-colors mt-1"
+          className="w-full glass-btn px-4 py-3 text-sm mt-1"
         >
           {isSubmitting ? "Checking in…" : "Check in now"}
         </button>
