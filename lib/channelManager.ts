@@ -31,8 +31,8 @@ const MOCK_ROOMS: ChannelRoom[] = [
     description:
       "Elegant studio with kitchenette, balcony and skyline views. Perfect for business stays and city breaks.",
     maxGuests: 2,
-    pricePerNight: 120,
-    currency: "USD",
+    pricePerNight: 1_850_000,
+    currency: "IDR",
     imageUrl:
       "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200",
     gallery: [
@@ -49,8 +49,8 @@ const MOCK_ROOMS: ChannelRoom[] = [
     description:
       "Spacious two-bedroom apartment with full kitchen, ideal for families and longer stays.",
     maxGuests: 4,
-    pricePerNight: 180,
-    currency: "USD",
+    pricePerNight: 2_750_000,
+    currency: "IDR",
     imageUrl:
       "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1200",
     gallery: [

@@ -29,7 +29,12 @@ const config: Config = {
         sans: ["system-ui", "ui-sans-serif", "Inter", "sans-serif"]
       },
       boxShadow: {
-        soft: "0 18px 45px rgba(0, 0, 0, 0.35)"
+        soft: "0 8px 32px rgba(0, 0, 0, 0.08)",
+        glass: "0 8px 32px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255,255,255,0.8)",
+        "glass-lg": "0 16px 48px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255,255,255,0.9)"
+      },
+      backdropBlur: {
+        '3xl': '64px'
       }
     }
   },

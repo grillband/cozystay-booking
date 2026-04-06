@@ -37,7 +37,7 @@ export function CheckInForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-6 bg-white rounded-2xl shadow-sm border border-slate-100 p-4 sm:p-6 max-w-lg w-full"
+      className="mt-6 bg-white/50 backdrop-blur-2xl rounded-2xl shadow-glass border border-white/60 p-4 sm:p-6 max-w-lg w-full"
     >
       <h2 className="text-base sm:text-lg font-semibold text-slate-900">
         Online check-in
@@ -54,7 +54,7 @@ export function CheckInForm() {
             type="text"
             value={code}
             onChange={(e) => setCode(e.target.value.toUpperCase())}
-            className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-soft focus:border-primary tracking-[0.2em] uppercase"
+            className="w-full rounded-xl border border-slate-200/80 bg-white/60 backdrop-blur-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400/40 focus:border-sky-400 tracking-[0.2em] uppercase"
             placeholder="e.g. CS7F92"
             required
           />
@@ -67,7 +67,7 @@ export function CheckInForm() {
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
-            className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary-soft focus:border-primary"
+            className="w-full rounded-xl border border-slate-200/80 bg-white/60 backdrop-blur-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-400/40 focus:border-sky-400"
             required
           />
         </div>
@@ -79,7 +79,7 @@ export function CheckInForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full inline-flex justify-center items-center rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-800 disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary transition-colors mt-1"
+          className="w-full inline-flex justify-center items-center rounded-xl bg-gradient-to-r from-sky-500 to-indigo-500 px-4 py-2.5 text-sm font-semibold text-white shadow-soft hover:from-sky-400 hover:to-indigo-400 disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-sky-400 transition-colors mt-1"
         >
           {isSubmitting ? "Checking in..." : "Check in now"}
         </button>

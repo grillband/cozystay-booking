@@ -6,10 +6,10 @@ export default function CheckInPage() {
   return (
     <div className="container-page py-8 sm:py-12 flex flex-col items-start">
       <div className="max-w-xl">
-        <p className="text-xs font-semibold tracking-[0.25em] text-primary uppercase">
+        <p className="text-xs font-semibold tracking-[0.25em] text-sky-500 uppercase">
           Arrival
         </p>
-        <h1 className="mt-2 text-2xl sm:text-3xl font-semibold text-slate-900">
+        <h1 className="mt-2 text-2xl sm:text-3xl font-semibold text-slate-800">
           Complete your online check-in
         </h1>
         <p className="mt-2 text-sm sm:text-base text-slate-600">
