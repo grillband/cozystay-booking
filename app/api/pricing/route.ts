@@ -21,8 +21,8 @@ export async function GET(request: NextRequest) {
 
     // Convert if a target currency is provided and differs from base
     if (targetCurrency && targetCurrency !== pricing.currency) {
-      const convertedPerNight = convertFromIDR(pricing.pricePerNight, targetCurrency);
-      const convertedTotal = convertFromIDR(pricing.totalPrice, targetCurrency);
+      const convertedPerNight = await convertFromIDR(pricing.pricePerNight, targetCurrency);
+      const convertedTotal = await convertFromIDR(pricing.totalPrice, targetCurrency);
       return NextResponse.json({
         pricePerNight: Math.round(convertedPerNight * 100) / 100,
         totalPrice: Math.round(convertedTotal * 100) / 100,

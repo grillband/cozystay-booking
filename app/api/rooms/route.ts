@@ -10,11 +10,16 @@ export async function GET(request: NextRequest) {
     const targetCurrency = new URL(request.url).searchParams.get("currency");
 
     if (targetCurrency && targetCurrency !== "IDR") {
-      const converted = rooms.map((room) => ({
-        ...room,
-        pricePerNight: Math.round(convertFromIDR(room.pricePerNight, targetCurrency) * 100) / 100,
-        currency: targetCurrency,
-      }));
+      const converted = await Promise.all(
+        rooms.map(async (room) => ({
+          ...room,
+          pricePerNight:
+            Math.round(
+              (await convertFromIDR(room.pricePerNight, targetCurrency)) * 100
+            ) / 100,
+          currency: targetCurrency,
+        }))
+      );
       return NextResponse.json({ rooms: converted });
     }
 

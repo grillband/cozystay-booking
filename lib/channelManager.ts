@@ -1,5 +1,7 @@
-// Abstraction layer for integrating with SmartOrder (or any) channel manager.
-// Replace mock implementations with real HTTP calls to SmartOrder's API.
+// Abstraction layer for channel manager integration.
+// Set CHANNEL_MANAGER_API_KEY and CHANNEL_MANAGER_API_URL in your .env.local
+// to connect to a real channel manager (e.g. Beds24, Cloudbeds, Hostaway, Guesty, etc.).
+// When these env vars are missing the app falls back to built-in mock data.
 
 export interface ChannelRoom {
   id: string;
@@ -24,6 +26,35 @@ export interface CreateBookingPayload {
   totalPrice?: number;
 }
 
+// ─── Helpers ────────────────────────────────────────────────────────────────
+const API_KEY = () => process.env.CHANNEL_MANAGER_API_KEY ?? "";
+const API_URL = () => process.env.CHANNEL_MANAGER_API_URL ?? "";
+const PROPERTY_ID = () => process.env.CHANNEL_MANAGER_PROPERTY_ID ?? "";
+
+function isLive(): boolean {
+  return !!(API_KEY() && API_URL());
+}
+
+async function cmFetch(path: string, init?: RequestInit): Promise<Response> {
+  const url = `${API_URL()}${path}`;
+  const res = await fetch(url, {
+    ...init,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${API_KEY()}`,
+      ...init?.headers,
+    },
+  });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    throw new Error(
+      `Channel manager API error ${res.status}: ${text || res.statusText}`
+    );
+  }
+  return res;
+}
+
+// ─── Mock data (used when no API key is configured) ─────────────────────────
 const MOCK_ROOMS: ChannelRoom[] = [
   {
     id: "studio-city",
@@ -38,10 +69,10 @@ const MOCK_ROOMS: ChannelRoom[] = [
     gallery: [
       "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "https://images.pexels.com/photos/1571450/pexels-photo-1571450.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      "https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=1200",
     ],
     nextAvailableDate: "2026-03-18",
-    availableNights: 5
+    availableNights: 5,
   },
   {
     id: "family-suite",
@@ -56,88 +87,106 @@ const MOCK_ROOMS: ChannelRoom[] = [
     gallery: [
       "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1200",
       "https://images.pexels.com/photos/276671/pexels-photo-276671.jpeg?auto=compress&cs=tinysrgb&w=1200",
-      "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1200"
+      "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=1200",
     ],
     nextAvailableDate: "2026-03-19",
-    availableNights: 3
-  }
+    availableNights: 3,
+  },
 ];
 
+// ─── Public API ─────────────────────────────────────────────────────────────
+
 export async function fetchRoomsFromChannelManager(): Promise<ChannelRoom[]> {
-  // TODO: Replace this with SmartOrder API integration.
-  // Example outline:
-  // const apiKey = process.env.SMARTORDER_API_KEY;
-  // const propertyId = process.env.SMARTORDER_PROPERTY_ID;
-  // const res = await fetch(`https://api.smartorder.example/properties/${propertyId}/rooms`, {
-  //   headers: { Authorization: `Bearer ${apiKey}` }
-  // });
-  // if (!res.ok) throw new Error("Failed to fetch rooms from channel manager");
-  // return res.json();
+  if (isLive()) {
+    const propertyId = PROPERTY_ID();
+    const path = propertyId
+      ? `/properties/${encodeURIComponent(propertyId)}/rooms`
+      : "/rooms";
+    const res = await cmFetch(path);
+    return res.json();
+  }
+
+  // Mock fallback
   await new Promise((resolve) => setTimeout(resolve, 200));
   return MOCK_ROOMS;
 }
 
-export async function getRoomPricing(roomId: string, checkIn: string, checkOut: string): Promise<{ pricePerNight: number; totalPrice: number; currency: string }> {
-  // TODO: Replace with SmartOrder pricing API call.
-  // Example:
-  // const res = await fetch(`https://api.smartorder.example/rooms/${roomId}/pricing?checkIn=${checkIn}&checkOut=${checkOut}`);
-  // if (!res.ok) throw new Error("Failed to fetch pricing");
-  // return res.json();
+export async function getRoomPricing(
+  roomId: string,
+  checkIn: string,
+  checkOut: string
+): Promise<{ pricePerNight: number; totalPrice: number; currency: string }> {
+  if (isLive()) {
+    const params = new URLSearchParams({ checkIn, checkOut });
+    const res = await cmFetch(
+      `/rooms/${encodeURIComponent(roomId)}/pricing?${params}`
+    );
+    return res.json();
+  }
 
-  // Simulate dynamic pricing based on dates
-  const room = MOCK_ROOMS.find(r => r.id === roomId);
+  // Mock dynamic pricing
+  const room = MOCK_ROOMS.find((r) => r.id === roomId);
   if (!room) throw new Error("Room not found");
 
   const checkInDate = new Date(checkIn);
   const checkOutDate = new Date(checkOut);
-  const nights = Math.ceil((checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
+  const nights = Math.ceil(
+    (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24)
+  );
 
-  // Dynamic pricing logic: weekends are 20% more expensive, peak season (summer) 15% more
   let basePrice = room.pricePerNight;
   const dayOfWeek = checkInDate.getDay();
-  if (dayOfWeek === 0 || dayOfWeek === 6) { // Weekend
-    basePrice *= 1.2;
-  }
+  if (dayOfWeek === 0 || dayOfWeek === 6) basePrice *= 1.2;
   const month = checkInDate.getMonth();
-  if (month >= 5 && month <= 8) { // Summer months
-    basePrice *= 1.15;
-  }
-
-  // Add some randomness for demand-based pricing
-  const demandMultiplier = 0.9 + Math.random() * 0.2; // 0.9 to 1.1
+  if (month >= 5 && month <= 8) basePrice *= 1.15;
+  const demandMultiplier = 0.9 + Math.random() * 0.2;
   basePrice *= demandMultiplier;
 
   const totalPrice = Math.round(basePrice * nights);
-
-  await new Promise((resolve) => setTimeout(resolve, 150)); // Simulate API delay
+  await new Promise((resolve) => setTimeout(resolve, 150));
 
   return {
     pricePerNight: Math.round(basePrice),
     totalPrice,
-    currency: room.currency
+    currency: room.currency,
   };
 }
 
 export async function createBookingInChannelManager(
   payload: CreateBookingPayload
 ): Promise<{ confirmationCode: string; totalPrice: number }> {
-  // TODO: Replace with SmartOrder booking API call.
-  // Example:
-  // const res = await fetch("https://api.smartorder.example/bookings", { ... });
-  // if (!res.ok) throw new Error("Failed to create booking");
-  // const data = await res.json();
-  // return { confirmationCode: data.code, totalPrice: data.totalPrice };
+  if (isLive()) {
+    const res = await cmFetch("/bookings", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    return {
+      confirmationCode: data.confirmationCode ?? data.code,
+      totalPrice: data.totalPrice,
+    };
+  }
 
-  // Get dynamic pricing from channel manager
-  const pricing = await getRoomPricing(payload.roomId, payload.checkIn, payload.checkOut);
+  // Mock fallback
+  const pricing = await getRoomPricing(
+    payload.roomId,
+    payload.checkIn,
+    payload.checkOut
+  );
 
-  // If totalPrice is provided, validate it matches
-  if (payload.totalPrice !== undefined && payload.totalPrice !== pricing.totalPrice) {
+  if (
+    payload.totalPrice !== undefined &&
+    payload.totalPrice !== pricing.totalPrice
+  ) {
     throw new Error("Price mismatch - please refresh and try again");
   }
 
   await new Promise((resolve) => setTimeout(resolve, 300));
-  return { confirmationCode: "CS" + Math.random().toString(36).slice(2, 7).toUpperCase(), totalPrice: pricing.totalPrice };
+  return {
+    confirmationCode:
+      "CS" + Math.random().toString(36).slice(2, 7).toUpperCase(),
+    totalPrice: pricing.totalPrice,
+  };
 }
 
 export async function completeOnlineCheckIn(
@@ -148,7 +197,15 @@ export async function completeOnlineCheckIn(
   roomName: string;
   doorCode?: string;
 }> {
-  // TODO: Replace with SmartOrder check-in endpoint (if available) or PMS.
+  if (isLive()) {
+    const res = await cmFetch("/check-in", {
+      method: "POST",
+      body: JSON.stringify({ confirmationCode, lastName }),
+    });
+    return res.json();
+  }
+
+  // Mock fallback
   await new Promise((resolve) => setTimeout(resolve, 250));
 
   if (!confirmationCode || !lastName) {
@@ -158,7 +215,7 @@ export async function completeOnlineCheckIn(
   return {
     guestName: `${lastName.trim()} Family`,
     roomName: "Bright Studio – City View",
-    doorCode: "4729"
+    doorCode: "4729",
   };
 }
 
