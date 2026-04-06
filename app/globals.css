@@ -143,6 +143,22 @@ body {
   @apply snap-start flex-shrink-0;
 }
 
+/* Hide scrollbar on any overflow-x-auto element */
+.overflow-x-auto {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.overflow-x-auto::-webkit-scrollbar {
+  display: none;
+}
+
+/* Touch-friendly tap targets */
+@media (pointer: coarse) {
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+}
+
 /* ─── Scroll-reveal animations ─── */
 .reveal {
   opacity: 0;

@@ -5,6 +5,7 @@ import { useState } from "react";
 export function Header() {
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [showFacilitiesModal, setShowFacilitiesModal] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const facilities = [
     "High-speed Wi‑Fi and dedicated workspace",
@@ -49,6 +50,73 @@ export function Header() {
           >
             Book now
           </a>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-xl text-gray-600 transition-colors"
+            style={{ background: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(20px)', border: '1px solid rgba(255,255,255,0.5)' }}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {mobileMenuOpen ? (
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+
+        {/* Mobile menu dropdown */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            mobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+          }`}
+          style={{ borderTop: mobileMenuOpen ? '1px solid rgba(255,255,255,0.4)' : 'none' }}
+        >
+          <nav className="container-page flex flex-col gap-1 py-3">
+            <a
+              href="#suites"
+              onClick={() => setMobileMenuOpen(false)}
+              className="rounded-xl px-4 py-3 text-sm text-gray-600 hover:text-gray-800 transition-colors"
+              style={{ background: 'rgba(255,255,255,0.3)' }}
+            >
+              Properties
+            </a>
+            <button
+              onClick={() => { setShowFacilitiesModal(true); setMobileMenuOpen(false); }}
+              className="rounded-xl px-4 py-3 text-sm text-gray-600 hover:text-gray-800 transition-colors text-left"
+              style={{ background: 'rgba(255,255,255,0.3)' }}
+            >
+              Facilities
+            </button>
+            <button
+              onClick={() => { setShowLocationModal(true); setMobileMenuOpen(false); }}
+              className="rounded-xl px-4 py-3 text-sm text-gray-600 hover:text-gray-800 transition-colors text-left"
+              style={{ background: 'rgba(255,255,255,0.3)' }}
+            >
+              Location
+            </button>
+            <a
+              href="/check-in"
+              onClick={() => setMobileMenuOpen(false)}
+              className="rounded-xl px-4 py-3 text-sm text-gray-600 hover:text-gray-800 transition-colors"
+              style={{ background: 'rgba(255,255,255,0.3)' }}
+            >
+              Check-in
+            </a>
+            <a
+              href="#booking"
+              onClick={() => setMobileMenuOpen(false)}
+              className="glass-btn px-4 py-3 text-sm mt-1"
+            >
+              Book now
+            </a>
+          </nav>
         </div>
       </header>
 

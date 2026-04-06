@@ -255,12 +255,12 @@ export default function HomePage() {
           </div>
 
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <div className="flex gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap sm:justify-center snap-x snap-mandatory sm:snap-none">
             {TABS.map((tab, i) => (
               <button
                 key={tab.label}
                 onClick={() => setActiveTab(i)}
-                className={`rounded-xl px-4 py-2 text-sm font-medium transition-all ${
+                className={`rounded-xl px-4 py-2.5 text-sm font-medium transition-all whitespace-nowrap snap-start flex-shrink-0 sm:flex-shrink ${
                   activeTab === i
                     ? "glass-btn"
                     : "text-gray-500 hover:text-gray-800"

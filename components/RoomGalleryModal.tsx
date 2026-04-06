@@ -61,7 +61,7 @@ export function RoomGalleryModal({ room, open, onClose }: RoomGalleryModalProps)
             </p>
           </div>
 
-          <div className="relative overflow-hidden rounded-xl h-64 sm:h-80" style={{ background: 'rgba(255,255,255,0.3)' }}>
+          <div className="relative overflow-hidden rounded-xl h-56 sm:h-80" style={{ background: 'rgba(255,255,255,0.3)' }}>
             <img
               src={images[index]}
               alt={room.name}
@@ -72,14 +72,14 @@ export function RoomGalleryModal({ room, open, onClose }: RoomGalleryModalProps)
                 <button
                   type="button"
                   onClick={prev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full text-white h-8 w-8 flex items-center justify-center text-sm transition-colors" style={{ background: 'rgba(0,0,0,0.25)', backdropFilter: 'blur(20px)' }}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full text-white h-10 w-10 flex items-center justify-center text-base transition-colors" style={{ background: 'rgba(0,0,0,0.25)', backdropFilter: 'blur(20px)' }}
                 >
                   ‹
                 </button>
                 <button
                   type="button"
                   onClick={next}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full text-white h-8 w-8 flex items-center justify-center text-sm transition-colors" style={{ background: 'rgba(0,0,0,0.25)', backdropFilter: 'blur(20px)' }}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full text-white h-10 w-10 flex items-center justify-center text-base transition-colors" style={{ background: 'rgba(0,0,0,0.25)', backdropFilter: 'blur(20px)' }}
                 >
                   ›
                 </button>
