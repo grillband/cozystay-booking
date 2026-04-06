@@ -1,11 +1,14 @@
 "use client";
 
 import { CheckInForm } from "@/components/CheckInForm";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 
 export default function CheckInPage() {
+  const revealContent = useScrollReveal();
+
   return (
     <div className="container-page py-12 sm:py-20 flex flex-col items-start">
-      <div className="max-w-xl">
+      <div ref={revealContent} className="max-w-xl reveal">
         <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
           Arrival
         </p>

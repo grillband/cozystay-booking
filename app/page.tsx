@@ -5,6 +5,7 @@ import { RoomCard, type Room } from "@/components/RoomCard";
 import { BookingPanel } from "@/components/BookingPanel";
 import { RoomGalleryModal } from "@/components/RoomGalleryModal";
 import { getCurrencyFromLocale } from "@/lib/currency";
+import { useScrollReveal } from "@/lib/useScrollReveal";
 
 const TABS = [
   {
@@ -70,6 +71,14 @@ export default function HomePage() {
   const [galleryRoomId, setGalleryRoomId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState(0);
 
+  const revealSuites = useScrollReveal();
+  const revealBooking = useScrollReveal();
+  const revealTabs = useScrollReveal();
+  const revealTestimonials = useScrollReveal();
+  const revealTestimonialCards = useScrollReveal();
+  const revealAbout = useScrollReveal();
+  const revealAboutCards = useScrollReveal();
+
   const userCurrency = useMemo(() => {
     if (typeof navigator === "undefined") return "IDR";
     const locale = navigator.language || "en-US";
@@ -115,7 +124,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/60 via-transparent to-transparent" />
 
-        <div className="container-page flex flex-col items-center justify-center text-center py-32 sm:py-44 lg:py-52">
+        <div className="container-page flex flex-col items-center justify-center text-center py-32 sm:py-44 lg:py-52 hero-animate">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4">
             CozyStay Collection
           </p>
@@ -166,7 +175,7 @@ export default function HomePage() {
 
       {/* ─── Property cards ─── */}
       <section id="suites" className="section-gap">
-        <div className="container-page">
+        <div ref={revealSuites} className="container-page reveal">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-8">
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
@@ -211,7 +220,7 @@ export default function HomePage() {
 
       {/* ─── Booking panel ─── */}
       <section id="booking" className="section-gap">
-        <div className="container-page max-w-2xl">
+        <div ref={revealBooking} className="container-page max-w-2xl reveal">
           <div className="text-center mb-8">
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Reservation
@@ -235,7 +244,7 @@ export default function HomePage() {
 
       {/* ─── Experience the exceptional (tabbed section) ─── */}
       <section className="section-gap">
-        <div className="container-page">
+        <div ref={revealTabs} className="container-page reveal">
           <div className="text-center mb-10">
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Why CozyStay
@@ -292,7 +301,7 @@ export default function HomePage() {
 
       {/* ─── Testimonials ─── */}
       <section className="section-gap">
-        <div className="container-page">
+        <div ref={revealTestimonials} className="container-page reveal">
           <div className="text-center mb-10">
             <p className="text-xs font-medium uppercase tracking-[0.25em] text-accent mb-2">
               Testimonials
@@ -302,7 +311,7 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3 reveal-children" ref={revealTestimonialCards}>
             {TESTIMONIALS.map((t) => (
               <div
                 key={t.name}
@@ -334,8 +343,8 @@ export default function HomePage() {
 
       {/* ─── About / amenities ─── */}
       <section className="section-gap">
-        <div className="container-page">
-          <div className="grid gap-6 lg:grid-cols-3">
+        <div ref={revealAbout} className="container-page reveal">
+          <div ref={revealAboutCards} className="grid gap-6 lg:grid-cols-3 reveal-children">
             <div className="glass rounded-2xl p-6 space-y-3">
               <h3 className="text-sm font-semibold text-gray-800">
                 About CozyStay
