@@ -47,7 +47,7 @@ const securityHeaders: Record<string, string> = {
   "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
 };
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Only apply to API routes
