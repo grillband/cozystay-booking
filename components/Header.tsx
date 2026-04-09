@@ -27,22 +27,21 @@ export function Header() {
             <span className="text-base font-semibold text-gray-800 tracking-tight">CozyStay</span>
           </a>
 
-          <nav className="hidden md:flex items-center gap-8 text-sm text-gray-500">
-            <a href="#suites" className="hover:text-gray-800 transition-colors">Properties</a>
-            <button
-              onClick={() => setShowFacilitiesModal(true)}
-              className="hover:text-gray-800 transition-colors"
-            >
-              Facilities
-            </button>
-            <button
-              onClick={() => setShowLocationModal(true)}
-              className="hover:text-gray-800 transition-colors"
-            >
-              Location
-            </button>
-            <a href="/check-in" className="hover:text-gray-800 transition-colors">Check-in</a>
-          </nav>
+           <nav className="hidden md:flex items-center gap-8 text-sm text-gray-500">
+             <a href="#suites" className="hover:text-gray-800 transition-colors">Properties</a>
+             <button
+               onClick={() => setShowFacilitiesModal(true)}
+               className="hover:text-gray-800 transition-colors"
+             >
+               Facilities
+             </button>
+             <button
+               onClick={() => setShowLocationModal(true)}
+               className="hover:text-gray-800 transition-colors"
+             >
+               Location
+             </button>
+           </nav>
 
           {/* Mobile hamburger */}
           <button
@@ -87,28 +86,20 @@ export function Header() {
             >
               Facilities
             </button>
-            <button
-              onClick={() => { setShowLocationModal(true); setMobileMenuOpen(false); }}
-              className="rounded-xl px-4 py-3 text-sm text-gray-600 hover:text-gray-800 transition-colors text-left"
-              style={{ background: 'rgba(255,255,255,0.3)' }}
-            >
-              Location
-            </button>
-            <a
-              href="/check-in"
-              onClick={() => setMobileMenuOpen(false)}
-              className="rounded-xl px-4 py-3 text-sm text-gray-600 hover:text-gray-800 transition-colors"
-              style={{ background: 'rgba(255,255,255,0.3)' }}
-            >
-              Check-in
-            </a>
-            <a
-              href="#booking"
-              onClick={() => setMobileMenuOpen(false)}
-              className="glass-btn px-4 py-3 text-sm mt-1"
-            >
-              Book now
-            </a>
+             <button
+               onClick={() => { setShowLocationModal(true); setMobileMenuOpen(false); }}
+               className="rounded-xl px-4 py-3 text-sm text-gray-600 hover:text-gray-800 transition-colors text-left"
+               style={{ background: 'rgba(255,255,255,0.3)' }}
+             >
+               Location
+             </button>
+             <a
+               href="#booking"
+               onClick={() => setMobileMenuOpen(false)}
+               className="glass-btn px-4 py-3 text-sm mt-1"
+             >
+               Book now
+             </a>
           </nav>
         </div>
       </header>

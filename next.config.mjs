@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+// Added to trigger dev server restart
 const nextConfig = {
   reactStrictMode: true,
   images: {

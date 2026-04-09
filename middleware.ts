@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 
 // ─── Simple in-memory rate limiter ──────────────────────────────────────────
+// NOTE: This in-memory Map only works for single-instance, long-running Node 
+// deployments. For serverless/edge environments (like Vercel), this state is 
+// lost between requests or not shared across instances. Consider using a 
+// Redis solution (e.g. Upstash) for production.
 const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
 
 const RATE_LIMITS: Record<string, { max: number; windowMs: number }> = {
@@ -48,7 +52,7 @@ const securityHeaders: Record<string, string> = {
   "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
 };
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Only apply to API routes
