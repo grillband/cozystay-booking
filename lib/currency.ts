@@ -94,7 +94,7 @@ export function getCurrencyFromLocale(locale: string): string {
   if (LOCALE_CURRENCY_MAP[normalized]) return LOCALE_CURRENCY_MAP[normalized];
   const lang = normalized.split("_")[0];
   if (LOCALE_CURRENCY_MAP[lang]) return LOCALE_CURRENCY_MAP[lang];
-  return "USD";
+  return "IDR";
 }
 
 export async function convertFromIDR(

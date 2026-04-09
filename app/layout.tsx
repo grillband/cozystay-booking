@@ -41,14 +41,13 @@ export default function RootLayout({
                     <li><a href="#reviews" className="hover:text-gray-800 transition-colors">Reviews</a></li>
                   </ul>
                 </div>
-                <div className="space-y-3">
-                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Support</p>
-                  <ul className="space-y-2 text-xs text-gray-400">
-                    <li><a href="/check-in" className="hover:text-gray-800 transition-colors">Online check-in</a></li>
-                    <li><a href="#" className="hover:text-gray-800 transition-colors">Help center</a></li>
-                    <li><a href="#" className="hover:text-gray-800 transition-colors">Contact us</a></li>
-                  </ul>
-                </div>
+                 <div className="space-y-3">
+                   <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Support</p>
+                   <ul className="space-y-2 text-xs text-gray-400">
+                     <li><a href="#" className="hover:text-gray-800 transition-colors">Help center</a></li>
+                     <li><a href="#" className="hover:text-gray-800 transition-colors">Contact us</a></li>
+                   </ul>
+                 </div>
                 <div className="space-y-3">
                   <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Contact</p>
                   <ul className="space-y-2 text-xs text-gray-400">
