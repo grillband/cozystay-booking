@@ -270,30 +270,3 @@ body {
 .hero-animate > *:nth-child(3) { animation-delay: 0.4s; }
 .hero-animate > *:nth-child(4) { animation-delay: 0.55s; }
 .hero-animate > *:nth-child(5) { animation-delay: 0.7s; }
-
-/* Tab crossfade */
-@keyframes tab-fade {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.animate-tab-fade {
-  animation: tab-fade 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Hero parallax-like slow zoom */
-@keyframes hero-zoom {
-  0%   { transform: scale(1); }
-  100% { transform: scale(1.08); }
-}
-.hero-bg-animate {
-  animation: hero-zoom 30s ease-out forwards;
-}
-
-/* Star pulse on testimonials */
-@keyframes star-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-.star-animate:hover .star-icon {
-  animation: star-pulse 0.4s ease-in-out;
-}

@@ -165,16 +165,16 @@ export default function HomePage() {
               "url('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1600')",
           }}
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-white/80 via-white/50 to-white/20" />
 
         <div className="container-page flex flex-col items-center justify-center text-center py-32 sm:py-44 lg:py-52 hero-animate">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-accent mb-4">
             CozyStay Collection
           </p>
-          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-gray-800 sm:text-5xl lg:text-6xl">
+          <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl drop-shadow-sm">
             Redefining your stay
           </h1>
-          <p className="mt-5 max-w-xl text-sm sm:text-base text-gray-500 leading-relaxed">
+          <p className="mt-5 max-w-xl text-sm sm:text-base text-gray-700 leading-relaxed drop-shadow-sm">
             From urban apartments to serene villas, where hotel quality meets the
             comfort of home.
           </p>
